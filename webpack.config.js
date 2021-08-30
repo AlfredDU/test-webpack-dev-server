@@ -9,7 +9,8 @@ module.exports = {
     entry: './src/index.ts',
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'main.js'
+        filename: 'main.js',
+        clean: true
     },
 
     // Enable sourcemaps for debugging webpack's output.
@@ -60,6 +61,7 @@ module.exports = {
 
     // dev server
     devServer: {
+        hot: true,
         port: 10050
     }
 
