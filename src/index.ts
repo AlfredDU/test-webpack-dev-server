@@ -4,6 +4,7 @@ const MAIN_CANVAS_ID = 'renderCanvas'
 
 // assets
 import '../css/full-screen.css'
+const webpack_img = require('../images/webpack.png').default
 
 // constants
 const CLEAR_COLOR = '#000000'
@@ -26,9 +27,15 @@ window.onload = () => {
     context.fillStyle = CLEAR_COLOR
     context.fillRect(0, 0, width, height)
 
-    // draw colorful rect
-    context.fillStyle = '#00ffff'
-    const size = 64
-    context.fillRect(width / 2 - size / 2, height / 2 - size / 2,
-        size, size)
+    // draw image
+    const size = 512
+    const image = new Image()
+
+    image.src = webpack_img
+    image.width = size
+    image.height = size
+
+    image.onload = () => {
+        context.drawImage(image, width / 2 - size / 2, height / 2 - size / 2)
+    }
 }
