@@ -28,6 +28,12 @@ module.exports = {
             // All output '.js' files will have any sourcemaps re-processed by 'source-map-loader'.
             { enforce: "pre", test: /\.js$/, loader: "source-map-loader" },
 
+            // Pack css
+            {
+                test: /\.css$/i,
+                use: ["style-loader", "css-loader"],
+            },
+
             // Pack images
             {
                 test: /\.(png|jpg|gif)$/i,
@@ -43,12 +49,12 @@ module.exports = {
         hints: false
     },
 
-    // generate index.html entry
+    // generate index.lodash.html entry
     plugins: [
         new HtmlWebpackPlugin({
             title: 'Development',
             // Load a custom template (lodash syntax by default)
-            template: 'index.html'
+            template: 'index.lodash.html'
         })
     ],
 
