@@ -1,10 +1,11 @@
 /** Webpack configure file. */
 // imports
 const path = require('path')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
 
 
 module.exports = {
-    mode: "production",
+    mode: "development",
     entry: './src/index.ts',
     output: {
         path: path.resolve(__dirname, 'dist'),
@@ -40,5 +41,20 @@ module.exports = {
     // large assets are necessary and need no worry
     performance: {
         hints: false
+    },
+
+    // generate index.html entry
+    plugins: [
+        new HtmlWebpackPlugin({
+            title: 'Development',
+            // Load a custom template (lodash syntax by default)
+            template: 'index.html'
+        })
+    ],
+
+    // dev server
+    devServer: {
+        port: 10050
     }
+
 }
